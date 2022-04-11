@@ -7,7 +7,7 @@ import { LocalStrategy } from './local.strategy';
 import { JwtModule } from '@nestjs/jwt/dist';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
-//import {RolesGuard} from '../role/roles.guard';
+import {RolesGuard} from '../role/role.guard';
 
 
 @Module({
@@ -15,7 +15,7 @@ import { JwtStrategy } from './jwt.strategy';
     secret: jwtConstants.secret,
     signOptions: { expiresIn: '3600s' },
   }),],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy, RolesGuard],
   controllers: [AuthController]
 })
 export class AuthModule {}

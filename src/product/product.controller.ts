@@ -12,7 +12,6 @@ export class ProductController {
 
     constructor(private readonly productService: ProductService){}
     @Get()
-    @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(Role.User, Role.Admin)
     getAllProduct() : Promise<Product[]> {
         return this.productService.findAll();
